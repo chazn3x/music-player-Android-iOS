@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "4.0.1",
     "@capacitor/app": "4.0.1",
     "@capacitor/core": "4.0.1",
     "@capacitor/haptics": "4.0.1",
+    "@capacitor/ios": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
     "@ionic/react": "^6.0.0",
@@ -44,7 +46,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "ios": "ionic cap run ios -l --external --target=875E3CC3-D1EF-4DDB-AED4-475FF912275D",
+    "android": "ionic cap run android -l --external --target=5322d80a"
   },
   "eslintConfig": {
     "extends": [

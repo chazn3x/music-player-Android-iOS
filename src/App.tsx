@@ -10,10 +10,10 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import { musicalNotes, playCircle, search } from 'ionicons/icons';
+import NowListeningPage from './pages/NowListeningPage';
+import SearchPage from './pages/SearchPage';
+import LibraryPage from './pages/LibraryPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -41,31 +41,31 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
+          <Route exact path="/now-listening">
+            <NowListeningPage />
           </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
+          <Route exact path="/search">
+            <SearchPage />
           </Route>
-          <Route path="/tab3">
-            <Tab3 />
+          <Route path="/library">
+            <LibraryPage />
           </Route>
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/now-listening" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+          <IonTabButton tab="now-listening" href="/now-listening">
+            <IonIcon icon={playCircle} />
+            <IonLabel>Now Listening</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+          <IonTabButton tab="search" href="/search">
+            <IonIcon icon={search} />
+            <IonLabel>Search</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+          <IonTabButton tab="library" href="/library">
+            <IonIcon icon={musicalNotes} />
+            <IonLabel>Library</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
