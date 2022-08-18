@@ -1,0 +1,6 @@
+.track-preview-sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  padding: .2rem 1rem;
+}
