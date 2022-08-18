@@ -7,6 +7,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
+  IonToast,
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -33,44 +34,60 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { TrackPreview } from './components/TrackPreview';
+import { usePlayer } from './hooks/usePlayer';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/now-listening">
-            <NowListeningPage />
-          </Route>
-          <Route exact path="/search">
-            <SearchPage />
-          </Route>
-          <Route path="/library">
-            <LibraryPage />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/now-listening" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="now-listening" href="/now-listening">
-            <IonIcon icon={playCircle} />
-            <IonLabel>Now Listening</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="search" href="/search">
-            <IonIcon icon={search} />
-            <IonLabel>Search</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="library" href="/library">
-            <IonIcon icon={musicalNotes} />
-            <IonLabel>Library</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/now-listening">
+              <NowListeningPage />
+            </Route>
+            <Route exact path="/search">
+              <SearchPage />
+            </Route>
+            <Route path="/library">
+              <LibraryPage />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/now-listening" />
+            </Route>
+          </IonRouterOutlet>
+
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="now-listening" href="/now-listening">
+              <IonIcon icon={playCircle} />
+              <IonLabel>Now Listening</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="search" href="/search">
+              <IonIcon icon={search} />
+              <IonLabel>Search</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="library" href="/library">
+              <IonIcon icon={musicalNotes} />
+              <IonLabel>Library</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+
+        <TrackPreview />
+
+        <IonToast
+          isOpen={true}
+          message="You must be logged in to play some music."
+          duration={3000}
+        />
+
+      </IonReactRouter>
+    </IonApp>
+  )
+};
 
 export default App;
